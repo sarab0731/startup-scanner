@@ -1,7 +1,9 @@
 import feedparser
+from urllib.parse import quote
 
 def get_startup_news(query):
-    url = f"https://news.google.com/rss/search?q={query}&hl=en-GB&gl=GB&ceid=GB:en"
+    encoded_query = quote(query)
+    url = f"https://news.google.com/rss/search?q={encoded_query}&hl=en-GB&gl=GB&ceid=GB:en"
     feed = feedparser.parse(url)
     
     results = []
@@ -17,7 +19,8 @@ def get_startup_news(query):
 
 # Test
 if __name__ == "__main__":
-    news = get_startup_news("London startup funding 2024")
+    news = get_startup_news("London startup funding 2026")
+    print(f"Found {len(news)} articles")
     for item in news:
         print(item["title"])
         print(item["published"])
