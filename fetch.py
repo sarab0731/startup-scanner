@@ -6,7 +6,7 @@ from datetime import datetime
 
 def get_startup_news(industry, location):
     # Search for startups based on industry and location
-    query = quote(f"{industry} startup {location} {datetime.now().year}")
+    query = quote(f"{industry} startup based in {location} {datetime.now().year}")
     
     feeds = [
         f"https://news.google.com/rss/search?q={query}&hl=en-GB&gl=GB&ceid=GB:en",
@@ -19,7 +19,7 @@ def get_startup_news(industry, location):
     
     for feed_url in feeds:
         feed = feedparser.parse(feed_url)
-        for entry in feed.entries[:5]:
+        for entry in feed.entries[:10]:
             if entry.title not in seen_titles:
                 seen_titles.add(entry.title)
                 results.append({

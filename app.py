@@ -1,7 +1,12 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
+
 from fetch import get_startup_news
+from analyse import analyse_articles
+
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():

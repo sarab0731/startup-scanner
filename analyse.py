@@ -1,13 +1,13 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def analyse_articles(articles):
-    # Combine article titles and summaries into one block of text
+def analyse_startups(articles, industry, location, role_type, interests):
     content = "\n".join([
         f"Title: {a['title']}\nSummary: {a['summary']}"
         for a in articles
@@ -18,21 +18,59 @@ def analyse_articles(articles):
         messages=[
             {
                 "role": "system",
-                "content": "You are a startup analyst. Analyse the following news articles and return a short summary of the startup activity and an opportunity score from 0-100."
+                "content": """You are a career advisor helping junior candidates find opportunities at startups.
+                
+Only include companies that are based in or have a significant office in {location}.
+If you are not confident a company is based there, exclude it.
+
+Extract company names from the articles and score each one.
+Return ONLY a JSON array, no other text, no markdown, no backticks.
+
+Each object must have exactly these fields:
+{
+    "company": "Company name",
+    "score": 85,
+    "reason": "One line explaining why this company is a good match",
+    "what_they_do": "Two sentence description of the company",
+    "culture": "Two sentence summary of work environment and culture",
+    "hiring_signals": "Why this company looks like it may be hiring",
+    "recent_news": "Most relevant recent news about this company"
+}"""
             },
             {
                 "role": "user",
-                "content": content
+                "content": f"""Articles:
+{content}
+
+User is looking for: {role_type} roles in {industry} in {location}
+Their interests are: {interests}
+
+Articles:
+{content}
+Only include companies actually based in {location}. Exclude any companies that are not.
+Return a JSON array of 3-5 companies scored on growth, culture and relevance to the interests above."""
+
             }
         ]
     )
 
-    return response.choices[0].message.content
+    raw = response.choices[0].message.content
+    return json.loads(raw)
 
 if __name__ == "__main__":
-    # Test
-    test_articles = [
-        {"title": "London AI startup raises £10M", "summary": "A new AI company secured funding to expand their team."},
-        {"title": "Fintech firm opens new London office", "summary": "Growing fintech company announces 200 new hires."}
-    ]
-    print(analyse_articles(test_articles))
+    from fetch import get_startup_news
+    
+    articles = get_startup_news("AI", "London")
+    results = analyse_startups(
+        articles,
+        industry="AI",
+        location="London",
+        role_type="Internship",
+        interests="machine learning, python"
+    )
+    
+    for company in results:
+        print(f"{company['company']} — {company['score']}/100")
+        print(f"Reason: {company['reason']}")
+        print()
+        print("---")
