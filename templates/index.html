@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/base.css">
+    <title>Startup Scanner</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Startup Scanner</h1>
+        <p class="subtitle">✨Enter your interests and preferred industry to discover startups unique to you!</p>
+
+        <div class="search-form">
+            <input type="text" id="industry" placeholder="Industry (e.g. AI, Fintech)" />
+            <input type="text" id="location" placeholder="Location (e.g. London)" />
+            <input type="text" id="interests" placeholder="Interests (e.g. machine learning, design)" />
+            <select id="role_type">
+                <option value="Internship">Internship</option>
+                <option value="Placement">Placement</option>
+                <option value="Graduate">Graduate</option>
+            </select>
+            <button onclick="search()">Search</button>
+        </div>
+
+        <div class="loading" id="loading">
+            Scanning startups... this takes about 10 seconds
+            
+        </div>
+
+        <div class="results-table" id="results">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Why it's a good fit</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2 id="modal-name"></h2>
+            <div class="score-big" id="modal-score"></div>
+            <div class="modal-section">
+                <h3>What they do</h3>
+                <p id="modal-what"></p>
+            </div>
+            <div class="modal-section">
+                <h3>Why it's a good fit for you</h3>
+                <p id="modal-fit"></p>
+            </div>
+            <div class="modal-section">
+                <h3>Culture</h3>
+                <p id="modal-culture"></p>
+            </div>
+            <div class="modal-section">
+                <h3>Hiring signals</h3>
+                <p id="modal-hiring"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+    
+</body>
+</html>

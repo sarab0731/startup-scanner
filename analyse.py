@@ -59,18 +59,15 @@ Return a JSON array of 3-5 companies scored on growth, culture and relevance to 
 
 if __name__ == "__main__":
     from fetch import get_startup_news
-    
     articles = get_startup_news("AI", "London")
     results = analyse_startups(
         articles,
         industry="AI",
         location="London",
         role_type="Internship",
-        interests="machine learning, python"
+        interests="machine learning, product design"
     )
-    
+    print(results)  # add this
     for company in results:
-        print(f"{company['company']} — {company['score']}/100")
-        print(f"Reason: {company['reason']}")
-        print()
-        print("---")
+        print(company.keys())  # and this - shows exact field names
+        break
