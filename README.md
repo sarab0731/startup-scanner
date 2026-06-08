@@ -31,8 +31,7 @@ The app:
 
 ## Demo
 
-[loom link](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
-
+[![Watch the demo](thumbnail.png)](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
 
 ## ⚙️ Features
 
@@ -47,12 +46,16 @@ The app:
 
 ## Tech Stack
 
+<div align="center">
+
 | Layer    | Technology            |
-| -------- | --------------------- |
+|----------|-----------------------|
 | Backend  | Python (Flask)        |
 | Frontend | HTML, CSS, JavaScript |
 | AI       | OpenAI API            |
 | Data     | RSS News Feeds        |
+
+</div>
 
 ## How It Works
 
