@@ -32,7 +32,7 @@ The app:
 
 ## 🎥 Demo
 
-[https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
+[](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
 
 ---
 
