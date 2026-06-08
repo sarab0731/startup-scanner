@@ -9,7 +9,7 @@ async function search() {
         return
     }
 
-    document.getElementById("loading").style.display = "block"
+    document.getElementById("loading").style.display = "flex"
     document.getElementById("results").style.display = "none"
 
     const params = new URLSearchParams({ industry, location, interests, role_type })
