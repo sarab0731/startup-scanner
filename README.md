@@ -28,13 +28,10 @@ The app:
   * Relevance
   * Fit
 
----
 
-## 🎥 Demo
+## Demo
 
-[](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
-
----
+[loom link](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
 
 
 ## ⚙️ Features
@@ -48,9 +45,7 @@ The app:
   * Why they match your profile
   * Culture indicators
 
----
-
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Layer    | Technology            |
 | -------- | --------------------- |
@@ -59,18 +54,14 @@ The app:
 | AI       | OpenAI API            |
 | Data     | RSS News Feeds        |
 
----
-
-## 🧪 How It Works
+## How It Works
 
 1. Enter search criteria *(e.g. AI internships in London)*
 2. Run a **live search**
 3. View ranked startup results
 4. Click a company for deeper insights
 
----
-
-## 📦 Local Setup
+## Local Setup
 
 ```bash
 # Clone the repo
@@ -86,17 +77,11 @@ pip install -r requirements.txt
 python app.py
 ```
 
----
-
-
 ## 📌 Notes
 
 * Results are generated in **real-time**
 * AI scoring is based on publicly available signals
 * Designed for **exploration**, not final decision-making
-
----
-
 
 ## ⭐ Future Improvements
 
