@@ -29,7 +29,7 @@ The app:
   * Fit
 
 
-## Demo
+## Demo video
 
 [![Watch the demo](thumbnail.png)](https://www.loom.com/share/30f5ab9ccd9f4c3c8813f7f880db5de0)
 
