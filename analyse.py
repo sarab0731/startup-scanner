@@ -14,7 +14,7 @@ def analyse_startups(articles, industry, location, role_type, interests):
     ])
 
     response = client.chat.completions.create(
-        model="gpt-4.1-nano",
+        model="gpt-5.4",
         messages=[
             {
                 "role": "system",
