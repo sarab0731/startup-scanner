@@ -6,7 +6,7 @@ from analyse import analyse_articles
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
 def home():
@@ -14,8 +14,17 @@ def home():
 
 @app.route("/search")
 def search():
-    query = request.args.get("query","London startup funding")
-    results = get_startup_news(query)
+    industry = request.args.get("industry", "")
+    location = request.args.get("location", "")
+    role_type = request.args.get("role_type", "")
+    interests = request.args.get("interests", "")
+
+    if not industry or not location:
+        return jsonify({"error": "Industry and location are required"}), 400
+
+    articles = get_startup_news(industry, location)
+    results = analyse_articles(articles, industry, location, role_type, interests)
+
     return jsonify(results)
 
 if __name__ == "__main__":
